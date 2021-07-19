@@ -3,7 +3,7 @@ import { Logger } from '@vue-storefront/core'
 
 export const getContent = async (
   { client, config }: ApiContext,
-  { slug }: ContentSearchParams,
+  { id, slug }: ContentSearchParams,
 ): Promise<any> => {
   const { token, cacheProvider } = config
   const Storyblok = new client({
@@ -15,10 +15,24 @@ export const getContent = async (
   })
   let response = null
   try {
-    const { data } = await Storyblok.get(`cdn/stories/${slug}`)
+    let storyPath = 'cdn/stories/'
+    let params = {}
+    if (id) {
+      storyPath += id
+      params = {
+        version: 'draft'
+      }
+    } else {
+      storyPath += slug
+    }
+    const { data } = await Storyblok.get(storyPath, params)
     response = data?.story
   } catch (error) {
-    Logger.error("Can't get data from Storyblok.", error)
+    if(error?.response?.status === 404) {
+      Logger.warn("Story not found", error)
+    } else {
+      Logger.error("Can't get data from Storyblok.", error)
+    }
   }
   return response
 }

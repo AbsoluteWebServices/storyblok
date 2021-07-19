@@ -1,5 +1,6 @@
 import { RenderComponent } from '@vue-storefront/core'
-import { Component } from '../types'
+import { Component, ContentSearchParams } from '../types'
+import { renderStoryblokContentFactory } from '../factories/renderStoryblokContentFactory'
 
 const buildImageObject = (
   items: { image: string }[],
@@ -7,7 +8,7 @@ const buildImageObject = (
 ) => {
   return items.map((item: { image }) => {
     const { replace } = actions
-    if (item.image) {
+    if (typeof item.image === 'string' && item.image) {
       const image = item.image
       const itemObject = replace
         ? { ...item, url: image }
@@ -24,7 +25,7 @@ const buildImageObject = (
   })
 }
 
-export const extractComponents = (
+const extractContent = (
   contentData: {} | [] = [],
 ): RenderComponent[] => {
   let content = contentData
@@ -52,3 +53,7 @@ export const extractComponents = (
     }
   })
 }
+
+const renderStoryblokContent = renderStoryblokContentFactory({ extractContent })
+
+export { renderStoryblokContent }

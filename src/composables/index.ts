@@ -1,4 +1,5 @@
-import { useContent } from './useContent'
-import { extractComponents } from './renderContent'
+import { useStory } from './useStory'
+import { useStoryblokContent } from './useStoryblokContent'
+import { renderStoryblokContent } from './renderStoryblokContent'
 
-export { useContent, extractComponents }
+export { useStory, useStoryblokContent, renderStoryblokContent }

@@ -1,5 +1,6 @@
-import typescript from 'rollup-plugin-typescript2'
-import pkg from './package.json'
+import pkg from './package.json';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
 
 const config = {
   input: 'src/index.ts',
@@ -15,12 +16,15 @@ const config = {
       sourcemap: true,
     },
   ],
-  external: [...Object.keys(pkg.dependencies || {})],
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {})
+  ],
   plugins: [
-    typescript({
-      // eslint-disable-next-line global-require
-      typescript: require('typescript'),
+    nodeResolve({
+      extensions: ['.ts', '.js'],
     }),
+    typescript()
   ],
 }
 const server = {
@@ -37,11 +41,14 @@ const server = {
     ...Object.keys(pkg.peerDependencies || {})
   ],
   plugins: [
-    typescript({
-      // eslint-disable-next-line global-require
-      typescript: require('typescript')
+    nodeResolve({
+      extensions: ['.ts', '.graphql', '.js'],
     }),
+    typescript()
   ]
 };
 
-export default [config, server]
+export default [
+  config,
+  server
+];

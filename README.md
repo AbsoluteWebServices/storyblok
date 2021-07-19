@@ -11,13 +11,13 @@ Full documentation can be found [here](https://docs.vuestorefront.io/storyblok).
 Install module into your app.
 
 ```bash
-npm install @vue-storefront/storyblok --save
+npm install @absolute-web/storyblok --save
 ```
 
 or
 
 ```bash
-yarn add @vue-storefront/storyblok
+yarn add @absolute-web/storyblok
 ```
 
 ### Setup
@@ -28,7 +28,7 @@ Register the module in the `nuxt.config` file.
 
 ```javascript
 modules: [
-  ['@vue-storefront/storyblok/nuxt', {
+  ['@absolute-web/storyblok/nuxt', {
     token: 'CONTENT_DELIVERY_TOKEN',
     cacheProvider: 'memory'
   }],
@@ -39,8 +39,15 @@ modules: [
 
 ---
 
-Copy the `RenderContent.vue` component from the integration package.
+Create the `RenderContent.vue` component with next content:
 
-```bash
-cp node_modules/@vue-storefront/storyblok/components/RenderContent.vue cms/
+```html
+<script>
+import { renderStoryblokContent } from '@absolute-web/storyblok';
+
+export default {
+  name: 'RenderContent',
+  ...renderStoryblokContent,
+};
+</script>
 ```

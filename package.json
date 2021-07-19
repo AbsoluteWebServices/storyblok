@@ -1,14 +1,13 @@
 {
-  "name": "@vue-storefront/storyblok",
-  "version": "0.2.3",
+  "name": "@absolute-web/storyblok",
+  "version": "0.0.1",
   "description": "Storyblok CMS integration with Vue Storefront",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "server": "server/index.js",
   "scripts": {
-    "build": "rollup -c && rm -r -- ./server/*/",
-    "build:clean": "rollup -c && rm -r -- ./lib/*/ && rm -r -- ./server/*/",
-    "dev": "rollup -c -w",
+    "build": "rimraf lib server && rollup -c",
+    "dev": "rimraf lib server && rollup -c -w",
     "test": "jest --passWithNoTests",
     "lint": "eslint --ext .js,.ts --ignore-path .eslintignore .",
     "prepublish": "yarn build"
@@ -27,14 +26,15 @@
   "dependencies": {
     "@vue-storefront/core": "^2.3.0",
     "axios": "latest",
-    "rollup": "latest",
-    "storyblok-js-client": "latest",
-    "tslib": "latest"
+    "storyblok-js-client": "^4.1.3",
+    "qs": "^6.10.1",
+    "vue-demi": "latest"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "@jest/globals": "latest",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "^4.17.0",
     "eslint": "latest",
@@ -45,9 +45,14 @@
     "jest": "latest",
     "lint-staged": "latest",
     "prettier": "latest",
-    "rollup-plugin-typescript2": "latest",
+    "rollup": "^2.52.1",
+    "rollup-plugin-typescript2": "^0.30.0",
     "ts-jest": "latest",
-    "typescript": "latest"
+    "typescript": "^4.3.3"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "1.0.0-beta.21",
+    "vue": "^2.0.0 || >=3.0.0-rc.0"
   },
   "publishConfig": {
     "access": "public"
