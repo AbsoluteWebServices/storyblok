@@ -1,4 +1,4 @@
-import { storyblokBridge } from './helpers/storyblokBridge'
+import { storyblokBridge, getStoryblokQueryParams } from './helpers/storyblokBridge'
 
 export * from './composables'
-export { storyblokBridge }
+export { storyblokBridge, getStoryblokQueryParams }

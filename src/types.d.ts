@@ -17,6 +17,7 @@ export interface ContentSearchParams {
   cache?: StoryblokCache
   slug?: string
   id?: string
+  throwErrors?: boolean
 }
 export interface ApiContext {
   client: any

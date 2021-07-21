@@ -5,15 +5,15 @@ import { storyblokBridge } from '../helpers/storyblokBridge';
 
 const useStory = (
   slug: string,
-  { skipLoading } = { skipLoading: false }
+  { skipLoading, prefetchedStory } = { skipLoading: false, prefetchedStory: null }
 ) => {
-  const { loading, content, error, search } = useStoryblokContent(slug);
+  const { loading, content, error, search } = useStoryblokContent(slug, prefetchedStory);
   const changedStory = ref(null);
   const story = computed(() => changedStory.value || content.value);
-  const storyContent = computed(() => story.value?.content || {});
+  const storyContent = computed(() => story.value?.content || null);
   const loadStory = async () => search({ slug });
 
-  if (!skipLoading) {
+  if (!skipLoading && !prefetchedStory) {
     onSSR(async () => {
       await loadStory();
     });

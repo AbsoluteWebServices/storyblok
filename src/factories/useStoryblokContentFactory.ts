@@ -17,8 +17,8 @@ export interface UseStoryblokContentFactoryParams<
 export function useStoryblokContentFactory<CONTENT, CONTENT_SEARCH_PARAMS>(
   factoryParams: UseStoryblokContentFactoryParams<CONTENT, CONTENT_SEARCH_PARAMS>
 ) {
-  return function useStoryblokContent(id: string): UseStoryblokContent<CONTENT, CONTENT_SEARCH_PARAMS> {
-    const content: Ref<CONTENT> = sharedRef([], `useStoryblokContent-content-${id}`);
+  return function useStoryblokContent(id: string, prefetchedValue?: CONTENT): UseStoryblokContent<CONTENT, CONTENT_SEARCH_PARAMS> {
+    const content: Ref<CONTENT> = sharedRef(prefetchedValue || null, `useStoryblokContent-content-${id}`);
     const loading: Ref<boolean> = sharedRef(false, `useStoryblokContent-loading-${id}`);
     const error: Ref<UseStoryblokContentErrors> = sharedRef({
       search: null

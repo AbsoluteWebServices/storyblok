@@ -1,5 +1,5 @@
 import { RenderComponent } from '@vue-storefront/core'
-import { Component, ContentSearchParams } from '../types'
+import { Component } from '../types'
 import { renderStoryblokContentFactory } from '../factories/renderStoryblokContentFactory'
 
 const buildImageObject = (

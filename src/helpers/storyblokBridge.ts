@@ -21,16 +21,19 @@ export const storyblokBridge = (
     if (story.id !== event.story.id) {
       return
     }
-    
+
     if (event.action === 'input') {
       callback(event.story);
     }
   })
 }
 
-export const getStoryblokQueryParams = () => {
-  const vm = getCurrentInstance();
-  const route = vm.$root.$route as any;
+export const getStoryblokQueryParams = (_route = null) => {
+  let route = _route;
+  if (!route) {
+    const vm = getCurrentInstance();
+    route = vm.$root.$route as any;
+  }
   const queryString = route.fullPath.replace(route.path, '')
   const { _storyblok: id, _storyblok_c: c, _storyblok_tk: storyblok = {} } = qsParse(queryString, { ignoreQueryPrefix: true }) as any
   const { space_id: spaceId, timestamp, token } = storyblok
