@@ -23,7 +23,12 @@ export declare type RenderStoryblokContentFactoryParams<CONTENT = any> = {
         const resolvedContent: RenderComponent[] = factoryParams.extractContent(content);
         resolvedContent.map(function component(component: RenderComponent) {
           const { componentName, props: { _editable, ...props } } = component;
-          const componentData: any = { key: props._uid, attrs: { name: componentName }, props }
+          const componentData: any = {
+            key: props._uid,
+            attrs: { ...self.$attrs, name: componentName },
+            props,
+            on: self.$listeners
+          }
 
           if(typeof _editable !== 'undefined' && _editable !== null) {
             componentData.directives = [
@@ -38,10 +43,12 @@ export declare type RenderStoryblokContentFactoryParams<CONTENT = any> = {
         });
         return components;
       },
+      inheritAttrs: false,
       props: {
         content: {
-          type: [Array, Object]
-        } as PropOptions<[] | any>
+          type: [Array, Object] as PropOptions<[] | any>,
+          required: true,
+        },
       },
       directives: {
         StoryblokEditable,
