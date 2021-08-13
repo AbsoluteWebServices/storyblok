@@ -7,7 +7,7 @@ declare module '@vue-storefront/core' {
       any,
       ContentSearchParams,
       {
-        getContent: (params: ContentSearchParams) => void
+        getContent: (params: ContentSearchParams) => Promise<any>
       }
     >
   }
