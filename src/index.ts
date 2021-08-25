@@ -2,3 +2,5 @@ import { storyblokBridge, getStoryblokQueryParams } from './helpers/storyblokBri
 
 export * from './composables'
 export { storyblokBridge, getStoryblokQueryParams }
+
+export { default as StoryblokEditable } from './directives/storyblok-editable'
