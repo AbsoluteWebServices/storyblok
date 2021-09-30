@@ -1,11 +1,12 @@
 import { parse as qsParse } from 'qs'
 import { getCurrentInstance } from 'vue-demi';
+import { StoryData } from 'storyblok-js-client'
 declare const window: any
 
 export const storyblokBridge = (
-  story: { id: number, content: {}[] },
+  story: StoryData,
   events: string[],
-  callback: (story: { content: {}[] }) => void
+  callback: (story: StoryData) => void
 ): any => {
   if (!window.storyblok || !Array.isArray(events) || !events.length || !story || !story.id) {
     return

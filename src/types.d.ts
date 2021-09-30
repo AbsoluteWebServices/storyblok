@@ -1,12 +1,12 @@
-import { StoryblokCache } from 'storyblok-js-client'
+import { StoryblokCache, StoriesParams, StoryData } from 'storyblok-js-client'
 import { ComputedRef } from 'vue-demi';
 
 export interface UseStoryblokContentErrors {
-  search: Error;
+  search: Error | null;
 }
-export interface UseStoryblokContent<CONTENT, CONTENT_SEARCH_PARAMS> {
-  search: (params: CONTENT_SEARCH_PARAMS) => Promise<void>;
-  content: ComputedRef<CONTENT>;
+export interface UseStoryblokContent {
+  search: (params: ContentSearchParams) => Promise<void>;
+  content: ComputedRef<StoryData>;
   loading: ComputedRef<boolean>;
   error: ComputedRef<UseStoryblokContentErrors>;
 }
@@ -17,7 +17,6 @@ export interface ContentSearchParams {
   cache?: StoryblokCache
   slug?: string
   id?: string
-  throwErrors?: boolean
 }
 export interface ApiContext {
   client: any
@@ -25,4 +24,14 @@ export interface ApiContext {
 }
 export interface Component {
   component: string
+}
+
+export interface UseStoriesErrors {
+  search: Error | null;
+}
+export interface UseStories {
+  search: (params: StoriesParams) => Promise<void>;
+  results: ComputedRef<StoryData[]>;
+  loading: ComputedRef<boolean>;
+  error: ComputedRef<UseStoriesErrors>;
 }

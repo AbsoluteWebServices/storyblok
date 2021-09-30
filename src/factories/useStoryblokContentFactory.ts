@@ -1,24 +1,22 @@
 import { Ref, computed } from 'vue-demi';
-import { UseStoryblokContent, UseStoryblokContentErrors } from '../types';
+import { UseStoryblokContent, UseStoryblokContentErrors, ContentSearchParams } from '../types';
 import {
   Context,
   sharedRef,
   Logger,
   configureFactoryParams, FactoryParams
 } from '@vue-storefront/core';
+import { StoryData } from 'storyblok-js-client'
 
-export interface UseStoryblokContentFactoryParams<
-  CONTENT,
-  CONTENT_SEARCH_PARAMS,
-> extends FactoryParams {
-  search: (context: Context, params: CONTENT_SEARCH_PARAMS) => Promise<CONTENT>;
+export interface UseStoryblokContentFactoryParams extends FactoryParams {
+  search: (context: Context, params: ContentSearchParams) => Promise<StoryData>;
 }
 
-export function useStoryblokContentFactory<CONTENT, CONTENT_SEARCH_PARAMS>(
-  factoryParams: UseStoryblokContentFactoryParams<CONTENT, CONTENT_SEARCH_PARAMS>
+export function useStoryblokContentFactory(
+  factoryParams: UseStoryblokContentFactoryParams
 ) {
-  return function useStoryblokContent(id: string, prefetchedValue?: CONTENT): UseStoryblokContent<CONTENT, CONTENT_SEARCH_PARAMS> {
-    const content: Ref<CONTENT> = sharedRef(prefetchedValue || null, `useStoryblokContent-content-${id}`);
+  return function useStoryblokContent(id: string, prefetchedValue?: StoryData): UseStoryblokContent {
+    const content: Ref<StoryData> = sharedRef(prefetchedValue || null, `useStoryblokContent-content-${id}`);
     const loading: Ref<boolean> = sharedRef(false, `useStoryblokContent-loading-${id}`);
     const error: Ref<UseStoryblokContentErrors> = sharedRef({
       search: null
@@ -26,7 +24,7 @@ export function useStoryblokContentFactory<CONTENT, CONTENT_SEARCH_PARAMS>(
     // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle
     const _factoryParams = configureFactoryParams(factoryParams);
 
-    const search = async(params: CONTENT_SEARCH_PARAMS): Promise<void> => {
+    const search = async(params: ContentSearchParams): Promise<void> => {
       Logger.debug(`useStoryblokContent/${id}/search`, params);
 
       try {

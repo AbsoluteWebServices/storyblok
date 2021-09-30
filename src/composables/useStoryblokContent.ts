@@ -4,7 +4,7 @@ import { ContentSearchParams, UseStoryblokContent } from '../types'
 import { UseStoryblokContentFactoryParams, useStoryblokContentFactory } from 'factories/useStoryblokContentFactory'
 import { getStoryblokQueryParams } from '../helpers/storyblokBridge'
 
-const factoryParams: UseStoryblokContentFactoryParams<any, ContentSearchParams> = {
+const factoryParams: UseStoryblokContentFactoryParams = {
   provide() {
     return {
       cache: useCache(),
@@ -21,10 +21,6 @@ const factoryParams: UseStoryblokContentFactoryParams<any, ContentSearchParams> 
       params.id = id;
     }
 
-    if (process?.env?.NODE_ENV === 'development') {
-      params.throwErrors = true;
-    }
-
     const content = await context.$sb.api.getContent(params);
 
     if (content) {
@@ -38,9 +34,6 @@ const factoryParams: UseStoryblokContentFactoryParams<any, ContentSearchParams> 
 const useStoryblokContent: (
   cacheId: string,
   prefetchedValue?: any,
-) => UseStoryblokContent<any, ContentSearchParams> = useStoryblokContentFactory<
-  any,
-  ContentSearchParams
->(factoryParams)
+) => UseStoryblokContent = useStoryblokContentFactory(factoryParams)
 
 export { useStoryblokContent }
