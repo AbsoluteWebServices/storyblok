@@ -21,7 +21,7 @@ const factoryParams: UseStoryblokContentFactoryParams = {
       params.id = id;
     }
 
-    const content = await context.$sb.api.getContent(params);
+    const content = await context.$sb.getApi.getContent(params);
 
     if (content) {
       context.cache.addTags([{ prefix: `sb_`, value: content.id }]);
