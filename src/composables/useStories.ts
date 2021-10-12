@@ -15,7 +15,7 @@ const factoryParams: UseStoriesFactoryParams = {
     context: Context,
     params: StoriesParams,
   ): Promise<StoryData[]> => {
-    const results = await context.$sb.api.getStories(params);
+    const results = await context.$sb.getApi.getStories(params);
 
     if (results && results.length) {
       for (const content of results) {
