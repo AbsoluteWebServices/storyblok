@@ -26,7 +26,6 @@
   "dependencies": {
     "@absolute-web/vsf-cache": "^2.3.4",
     "@vue-storefront/core": "~2.4.1",
-    "axios": "latest",
     "storyblok-js-client": "^4.1.3",
     "qs": "^6.10.1",
     "vue-demi": "latest"
