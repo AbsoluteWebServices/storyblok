@@ -1,8 +1,8 @@
-import { IntegrationContext } from '@vue-storefront/core'
+import { IntegrationContext } from '@absolute-web/vsf-core'
 import { ContentSearchParams } from './types'
 import { StoriesParams, StoryData } from 'storyblok-js-client'
 
-declare module '@vue-storefront/core' {
+declare module '@absolute-web/vsf-core' {
   export interface Context {
     $sb: IntegrationContext<
       any,
