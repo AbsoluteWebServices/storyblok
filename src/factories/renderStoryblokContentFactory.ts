@@ -3,7 +3,7 @@ import { VNode } from 'vue';
 import { PropOptions } from 'vue-demi';
 import {
   RenderComponent,
-} from '@vue-storefront/core';
+} from '@absolute-web/vsf-core';
 
 import StoryblokEditable from '../directives/storyblok-editable';
 

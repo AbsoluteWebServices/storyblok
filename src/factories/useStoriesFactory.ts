@@ -5,7 +5,7 @@ import {
   sharedRef,
   Logger,
   configureFactoryParams, FactoryParams
-} from '@vue-storefront/core';
+} from '@absolute-web/vsf-core';
 import { StoriesParams, StoryData } from 'storyblok-js-client'
 
 export interface UseStoriesFactoryParams extends FactoryParams {

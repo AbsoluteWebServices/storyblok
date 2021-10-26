@@ -1,4 +1,4 @@
-import { Context } from '@vue-storefront/core'
+import { Context } from '@absolute-web/vsf-core'
 import { useCache } from '@absolute-web/vsf-cache';
 import { ContentSearchParams, UseStoryblokContent } from '../types'
 import { UseStoryblokContentFactoryParams, useStoryblokContentFactory } from 'factories/useStoryblokContentFactory'

@@ -32,7 +32,7 @@ export const storyblokBridge = (
 export const getStoryblokQueryParams = (_route = null) => {
   let route = _route;
   if (!route) {
-    const vm = getCurrentInstance();
+    const vm = getCurrentInstance() as any;
     route = vm.$root.$route as any;
   }
   const queryString = route.fullPath.replace(route.path, '')

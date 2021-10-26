@@ -1,5 +1,5 @@
 import { Ref, ref, computed, onMounted } from 'vue-demi';
-import { onSSR, sharedRef } from '@vue-storefront/core';
+import { onSSR, sharedRef } from '@absolute-web/vsf-core';
 import { useStoryblokContent } from './useStoryblokContent';
 import { storyblokBridge } from '../helpers/storyblokBridge';
 import { StoryData } from 'storyblok-js-client'

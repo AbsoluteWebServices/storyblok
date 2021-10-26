@@ -1,5 +1,5 @@
 import { ApiContext, ContentSearchParams } from './types'
-import { Logger } from '@vue-storefront/core'
+import { Logger } from '@absolute-web/vsf-core'
 import { StoriesParams } from 'storyblok-js-client'
 
 export const getContent = async (
