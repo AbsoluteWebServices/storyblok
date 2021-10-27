@@ -1,6 +1,6 @@
 {
   "name": "@absolute-web/storyblok",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Storyblok CMS integration with Vue Storefront",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
@@ -24,11 +24,8 @@
   "author": "Vue Storefront",
   "license": "MIT",
   "dependencies": {
-    "@absolute-web/vsf-cache": "^0.0.1",
-    "@absolute-web/vsf-core": "^0.0.1",
     "storyblok-js-client": "^4.1.3",
-    "qs": "^6.10.1",
-    "vue-demi": "latest"
+    "qs": "^6.10.1"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -51,8 +48,10 @@
     "typescript": "^4.3.3"
   },
   "peerDependencies": {
-    "@vue/composition-api": "1.0.0-beta.21",
-    "vue": "^2.0.0 || >=3.0.0-rc.0"
+    "@absolute-web/vsf-cache": "~0.0.1",
+    "@absolute-web/vsf-core": "~0.0.1",
+    "vue": "^2.0.0 || >=3.0.0-rc.0",
+    "vue-demi": "latest"
   },
   "publishConfig": {
     "access": "public"
