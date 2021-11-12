@@ -19,13 +19,11 @@ export const storyblokBridge = (
 
   window.storyblok.init()
   window.storyblok.on(events, (event) => {
-    if (story.id !== event.story.id) {
+    if (event.action !== 'input' || !event.story || event.story.id !== story.id) {
       return
     }
 
-    if (event.action === 'input') {
-      callback(event.story);
-    }
+    callback(event.story);
   })
 }
 
