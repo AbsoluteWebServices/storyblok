@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { extractComponents } from '@vue-storefront/storyblok'
+import { extractComponents } from '@absolute-web/storyblok'
 
 interface RenderContent {
   componentName: string

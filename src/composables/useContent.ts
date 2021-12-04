@@ -1,4 +1,4 @@
-import { useContentFactory, UseContent, Context } from '@vue-storefront/core'
+import { useContentFactory, UseContent, Context } from '@absolute-web/vsf-core'
 import { ContentSearchParams } from '../types'
 
 const search = async (

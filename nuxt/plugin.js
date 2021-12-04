@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import StoryblokVue from 'storyblok-vue'
-import { integrationPlugin } from '@vue-storefront/core'
+import StoryblokVue from '@storyblok/vue'
+import { integrationPlugin } from '@absolute-web/vsf-core'
 
 Vue.use(StoryblokVue)
 

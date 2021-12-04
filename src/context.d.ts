@@ -1,7 +1,7 @@
-import { IntegrationContext } from '@vue-storefront/core'
+import { IntegrationContext } from '@absolute-web/vsf-core'
 import { ContentSearchParams } from './types'
 
-declare module '@vue-storefront/core' {
+declare module '@absolute-web/vsf-core' {
   export interface Context {
     $sb: IntegrationContext<
       any,

@@ -1,4 +1,4 @@
-import { RenderComponent } from '@vue-storefront/core'
+import { RenderComponent } from '@absolute-web/vsf-core'
 import { Component } from '../types'
 import { buildImageObject } from '../helpers'
 

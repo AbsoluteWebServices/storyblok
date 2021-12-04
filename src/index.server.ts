@@ -1,4 +1,4 @@
-import { apiClientFactory } from '@vue-storefront/core'
+import { apiClientFactory } from '@absolute-web/vsf-core'
 import { ApiContext, ContentSearchParams } from './types'
 import StoryblokClient from 'storyblok-js-client'
 

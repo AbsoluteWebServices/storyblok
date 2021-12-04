@@ -1,5 +1,5 @@
 import { ApiContext, ApiResponse, ContentSearchParams } from './types'
-import { Logger } from '@vue-storefront/core'
+import { Logger } from '@absolute-web/vsf-core'
 import { nanoid } from 'nanoid'
 import { errorMessage } from './helpers/constants'
 import { extractNestedComponents } from './helpers'
