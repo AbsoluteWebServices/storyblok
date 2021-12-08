@@ -27,13 +27,13 @@ export const getContent = async (
       type: cacheProvider,
     },
   })
-  const resolveCustomSearch = id ? { by_uuids_ordered: id } : custom || {}
+  const resolveCustomSearch = custom || {}
   if (!id && custom && typeof custom !== 'object') {
     return Logger.warn(`${errorMessage.GENERAL} ${errorMessage.WRONG_CUSTOM}`)
   }
   try {
     const { data }: { data: ApiResponse } = await Storyblok.get(
-      `cdn/stories/${id || custom ? '' : url}`,
+      `cdn/stories/${id || url}`,
       {
         ...((!cache ? { cv: nanoid() } : {}) as any),
         ...resolveCustomSearch,
