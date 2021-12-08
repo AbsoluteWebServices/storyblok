@@ -1,7 +1,8 @@
 export const storyblokBridge = (
-  content = { content: {} },
+  content = {},
   events = ['change', 'input'],
   relations = [],
+  callback,
 ) => {
   if (window) {
     // eslint-disable-next-line
@@ -9,10 +10,14 @@ export const storyblokBridge = (
       resolveRelations: relations,
     })
     instance.on(events, (payload) => {
-      content.content = {
+      if (!payload.story || payload.story.id !== content._meta.id) {
+        return
+      }
+
+      callback({
         ...payload.story.content,
         _meta: payload.story,
-      }
+      })
     })
   }
 }
