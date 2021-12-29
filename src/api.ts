@@ -33,7 +33,7 @@ export const getContent = async (
   }
   try {
     const { data }: { data: ApiResponse } = await Storyblok.get(
-      `cdn/stories/${id || url}`,
+      `cdn/stories/${id || url || ''}`,
       {
         ...((!cache ? { cv: nanoid() } : {}) as any),
         ...resolveCustomSearch,
@@ -42,9 +42,9 @@ export const getContent = async (
         version,
       },
     )
-    return data.story
-      ? extractNestedComponents(data.story)
-      : extractNestedComponents({ content: data.stories }, true) || []
+    return data.stories
+      ? data.stories.map(story => extractNestedComponents(story))
+      : extractNestedComponents(data.story)
   } catch (error) {
     Logger.warn(`${errorMessage.GENERAL}`, error)
     return []
