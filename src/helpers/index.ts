@@ -49,6 +49,9 @@ export const extractNestedComponents: (
   }
   return {
     ...data.content,
-    _meta: !stories ? data : null,
+    _meta: !stories ? {
+      ...data,
+      content: undefined,
+    } : null,
   }
 }

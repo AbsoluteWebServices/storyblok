@@ -43,7 +43,7 @@ export const getContent = async (
       },
     )
     return data.stories
-      ? data.stories.map(story => extractNestedComponents(story))
+      ? data.stories.map((story) => extractNestedComponents(story))
       : extractNestedComponents(data.story)
   } catch (error) {
     Logger.warn(`${errorMessage.GENERAL}`, error)

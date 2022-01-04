@@ -7,7 +7,7 @@ declare module '@absolute-web/vsf-core' {
       any,
       ContentSearchParams,
       {
-        getContent: (params: ContentSearchParams) => void
+        getContent: (params: ContentSearchParams) => Promise<[] | void | {}>
       }
     >
   }
