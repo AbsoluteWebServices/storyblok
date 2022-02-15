@@ -24,11 +24,19 @@ const cacheExtension: ApiClientExtension = {
   name: 'cacheExtension',
   hooks: (req, res) => ({
     afterCall: ({ configuration, response }) => {
-      if (response && response.length) {
-        const cacheTagsHeaderName = configuration.headers?.cacheTagsHeaderName || defaultSettings.headers.cacheTagsHeaderName;
-        const tags = response.map(({ _meta: { id } }) => 'sb_' + id);
+      if (response) {
+        const tags = [];
 
-        res.header(cacheTagsHeaderName, tags.join(','));
+        if (Array.isArray(response) && response.length) {
+          tags.push(response.map(({ _meta: { id } }) => 'sb_' + id));
+        } else if(Object.prototype.hasOwnProperty.call(response, '_meta')) {
+          tags.push('sb_' + response._meta.id);
+        }
+
+        if (tags.length) {
+          const cacheTagsHeaderName = configuration.headers?.cacheTagsHeaderName || defaultSettings.headers.cacheTagsHeaderName;
+          res.header(cacheTagsHeaderName, tags.join(','));
+        }
       }
       return response;
     }
