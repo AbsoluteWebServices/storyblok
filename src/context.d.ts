@@ -1,4 +1,4 @@
-import { IntegrationContext } from '@absolute-web/vsf-core'
+import { ApiClientMethods, IntegrationContext } from '@absolute-web/vsf-core'
 import { ContentSearchParams } from './types'
 
 declare module '@absolute-web/vsf-core' {
@@ -6,9 +6,9 @@ declare module '@absolute-web/vsf-core' {
     $sb: IntegrationContext<
       any,
       ContentSearchParams,
-      {
+      ApiClientMethods<{
         getContent: (params: ContentSearchParams) => Promise<[] | void | {}>
-      }
+      }>
     >
   }
 }

@@ -1,4 +1,5 @@
 import {
+  ComposableFunctionArgs,
   useContentFactory,
   UseContent,
   UseContentFactoryParams,
@@ -15,9 +16,16 @@ const factoryParams: UseContentFactoryParams<any, ContentSearchParams> = {
   },
   search: async (
     context: Context,
-    params: ContentSearchParams,
+    params: ComposableFunctionArgs<ContentSearchParams>,
   ): Promise<any> => {
-    const response = await context.$sb.getApi.getContent(params)
+    const {
+      signal,
+      ...searchParams
+    } = {
+      ...params
+    };
+
+    const response = await context.$sb.getApi.getContent(searchParams, undefined, signal)
 
     if (response) {
       let tags = []
