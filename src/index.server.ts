@@ -45,10 +45,11 @@ const cacheExtension: ApiClientExtension = {
 
 const { createApiClient } = apiClientFactory({
   onCreate: setup,
-  api: {
+  api: {},
+  getApi: {
     getContent,
   },
   extensions: [cacheExtension],
-} as any)
+})
 
 export { createApiClient }

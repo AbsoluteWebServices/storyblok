@@ -6,6 +6,7 @@ declare module '@absolute-web/vsf-core' {
     $sb: IntegrationContext<
       any,
       ContentSearchParams,
+      ApiClientMethods<{}>,
       ApiClientMethods<{
         getContent: (params: ContentSearchParams) => Promise<[] | void | {}>
       }>
